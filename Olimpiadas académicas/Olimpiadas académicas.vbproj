@@ -321,6 +321,12 @@
     <Compile Include="Vistas\NewPromt\frmPromt.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vistas\NewPromt\frmPuestos.Designer.vb">
+      <DependentUpon>frmPuestos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\NewPromt\frmPuestos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Vistas\NewPromt\pnParticipantsCat.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -328,6 +334,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Vistas\NewPromt\pnResult.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Vistas\NewPromt\pnsPuesto\pnParticipantesCatPuesto.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Vistas\Resultados\frmDetalleResultado.Designer.vb">
@@ -474,6 +483,9 @@
     <EmbeddedResource Include="Vistas\NewPromt\frmPromt.resx">
       <DependentUpon>frmPromt.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\NewPromt\frmPuestos.resx">
+      <DependentUpon>frmPuestos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Resultados\frmDetalleResultado.resx">
       <DependentUpon>frmDetalleResultado.vb</DependentUpon>
     </EmbeddedResource>
@@ -579,6 +591,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="IG logo.ico" />
+    <None Include="Resources\winner.png" />
+    <None Include="Resources\copa.jpg" />
     <None Include="Resources\planet.jpg" />
     <None Include="Resources\decoroStreak.jpg" />
     <None Include="Resources\fondoStreak.jpg" />

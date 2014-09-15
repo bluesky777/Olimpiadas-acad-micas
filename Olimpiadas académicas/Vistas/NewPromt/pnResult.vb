@@ -7,12 +7,16 @@
     Dim timerAnim As Timer
     Public Examenes As New ArrayList({1322, 1232, 3234})
     Public dtExamenes As DataTable
+    Public soloPuestos As Boolean
 
     ' Para buscar todos lo que concuerden
     Dim idCatTemp As Integer
 
 
-    Public Sub New(ByRef frmParent As Form, ByRef DatosClientes As List(Of clsDatosDeUnCliente))
+    Public Sub New(ByRef frmParent As Form, ByRef DatosClientes As List(Of clsDatosDeUnCliente), Optional ByVal soloPuestos As Boolean = False)
+
+        ' Para saber en los páneles si solo mostraré los puestos
+        Me.soloPuestos = soloPuestos
 
         Me.Top = frmParent.Top + 50
         'Me.Width = frmParent.Width - 40

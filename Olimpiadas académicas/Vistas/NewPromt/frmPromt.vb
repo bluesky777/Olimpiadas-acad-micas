@@ -37,13 +37,19 @@
     End Sub
 
 
-    Public Sub MostrarResultados(ByRef DatosClientes As List(Of clsDatosDeUnCliente))
+    Public Sub MostrarResultados(ByRef DatosClientes As List(Of clsDatosDeUnCliente), Optional ByVal soloPuestos As Boolean = False)
 
-        lbTitulo.Text = "Participantes."
+        If soloPuestos = False Then
+            lbTitulo.Text = "Participantes."
+            PanelResultados = New pnResult(Me, DatosClientes)
+        Else
+            lbTitulo.Text = "PUESTOS."
+            PanelResultados = New pnResult(Me, DatosClientes, True)
+        End If
 
-        PanelResultados = New pnResult(Me, DatosClientes)
         Me.Controls.Add(PanelResultados)
         PanelResultados.BringToFront()
+
     End Sub
 
 

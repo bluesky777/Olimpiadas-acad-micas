@@ -45,7 +45,6 @@
         Dim dtCateg As New DataTable
 
         conn.TraerTabla(dtCateg, "Select CatId, CatNombre from tbCategorias where CatEvento=" & Yo.EvId)
-
         cbCategorias.DataSource = dtCateg
         cbCategorias.DisplayMember = "CatNombre"
         cbCategorias.ValueMember = "CatId"

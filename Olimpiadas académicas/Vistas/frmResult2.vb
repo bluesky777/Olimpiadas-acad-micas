@@ -140,7 +140,7 @@ Public Class frmResult2
         ConsultaBuscar = "select ExaId, u.UsuId, UsuNombre, EntNombreCorto, InsId, CatNombreCorto, CatNombre, ExaCantPreg " _
                         & "from tbEventos ev, tbCategorias c, tbInscripciones i, tbExamenes ex, tbEntidades en, " _
                         & "tbUsuarios u " _
-                        & "where ev.EvId=c.CatEvento and c.CatId=i.InsCategoria and i.InsId=ex.ExaInscripcion and ExaTipoExamen= 1 " _
+                        & "where ev.EvId=c.CatEvento and c.CatId=i.InsCategoria and i.InsId=ex.ExaInscripcion and ExaTipoExamen= 2 " _
                         & "and u.UsuId=i.InsUsuario " _
                         & "and en.EntId=i.InsEntidad " & CriteriosBusqueda
 
@@ -571,4 +571,5 @@ Public Class frmResult2
         Next
     End Sub
 
+ 
 End Class

@@ -121,6 +121,9 @@
   <data name="FondoDos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\fondo frm dos.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="planet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\planet.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="decoroStreak" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\decoroStreak.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -142,6 +145,9 @@
   <data name="Resultados" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\3d bar chart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="copa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\copa.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Entidades" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Revolution Icon 10_40-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -154,13 +160,16 @@
   <data name="Profile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Profile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="winner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\winner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="FondoExamen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\olimpiadas academicass.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FondoCuatro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\fondo frm cuatro.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="planet" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\planet.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="winner1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\winner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

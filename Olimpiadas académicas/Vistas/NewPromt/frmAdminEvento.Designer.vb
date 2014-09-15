@@ -67,6 +67,8 @@ Partial Class frmAdminEvento
         Me.ActualizarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListCategorias = New System.Windows.Forms.ListBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btOcultarPuntajes = New System.Windows.Forms.Button()
+        Me.btMostrarPuntajes = New System.Windows.Forms.Button()
         Me.btCerrarLive = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.lbPregActual = New System.Windows.Forms.Label()
@@ -84,6 +86,7 @@ Partial Class frmAdminEvento
         Me.lbCategoriaLive = New System.Windows.Forms.Label()
         Me.lbPreguntaLive = New System.Windows.Forms.Label()
         Me.lbActionLive = New System.Windows.Forms.Label()
+        Me.btMostrarPuestos = New System.Windows.Forms.Button()
         Me.ContextMenuLive = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.CerrarToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.CerraPromtToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -91,8 +94,13 @@ Partial Class frmAdminEvento
         Me.ParticipanteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PreguntaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.btIniciarTest = New System.Windows.Forms.Button()
-        Me.btMostrarPuntajes = New System.Windows.Forms.Button()
-        Me.btOcultarPuntajes = New System.Windows.Forms.Button()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.GroupPuesto = New System.Windows.Forms.GroupBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.nuPuesto = New System.Windows.Forms.NumericUpDown()
+        Me.rdSeleccionadosPuestos = New System.Windows.Forms.RadioButton()
+        Me.rdTodoPuestos = New System.Windows.Forms.RadioButton()
+        Me.btOcultarPuestos = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupClientes.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -104,6 +112,9 @@ Partial Class frmAdminEvento
         CType(Me.nuPregunta, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelLive.SuspendLayout()
         Me.ContextMenuLive.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
+        Me.GroupPuesto.SuspendLayout()
+        CType(Me.nuPuesto, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -298,7 +309,7 @@ Partial Class frmAdminEvento
         '
         'btMostrarParticipantes
         '
-        Me.btMostrarParticipantes.Location = New System.Drawing.Point(243, 42)
+        Me.btMostrarParticipantes.Location = New System.Drawing.Point(243, 19)
         Me.btMostrarParticipantes.Name = "btMostrarParticipantes"
         Me.btMostrarParticipantes.Size = New System.Drawing.Size(132, 43)
         Me.btMostrarParticipantes.TabIndex = 3
@@ -407,14 +418,32 @@ Partial Class frmAdminEvento
         Me.GroupBox1.Controls.Add(Me.btMostrarParticipantes)
         Me.GroupBox1.Location = New System.Drawing.Point(505, 27)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(405, 398)
+        Me.GroupBox1.Size = New System.Drawing.Size(405, 375)
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Segunda pantalla"
         '
+        'btOcultarPuntajes
+        '
+        Me.btOcultarPuntajes.Location = New System.Drawing.Point(243, 331)
+        Me.btOcultarPuntajes.Name = "btOcultarPuntajes"
+        Me.btOcultarPuntajes.Size = New System.Drawing.Size(132, 24)
+        Me.btOcultarPuntajes.TabIndex = 22
+        Me.btOcultarPuntajes.Text = "Ocultar puntajes"
+        Me.btOcultarPuntajes.UseVisualStyleBackColor = True
+        '
+        'btMostrarPuntajes
+        '
+        Me.btMostrarPuntajes.Location = New System.Drawing.Point(243, 302)
+        Me.btMostrarPuntajes.Name = "btMostrarPuntajes"
+        Me.btMostrarPuntajes.Size = New System.Drawing.Size(132, 24)
+        Me.btMostrarPuntajes.TabIndex = 21
+        Me.btMostrarPuntajes.Text = "Mostrar puntajes"
+        Me.btMostrarPuntajes.UseVisualStyleBackColor = True
+        '
         'btCerrarLive
         '
-        Me.btCerrarLive.Location = New System.Drawing.Point(243, 290)
+        Me.btCerrarLive.Location = New System.Drawing.Point(243, 253)
         Me.btCerrarLive.Name = "btCerrarLive"
         Me.btCerrarLive.Size = New System.Drawing.Size(132, 43)
         Me.btCerrarLive.TabIndex = 20
@@ -463,7 +492,7 @@ Partial Class frmAdminEvento
         '
         'btLiveImagen
         '
-        Me.btLiveImagen.Location = New System.Drawing.Point(243, 91)
+        Me.btLiveImagen.Location = New System.Drawing.Point(243, 68)
         Me.btLiveImagen.Name = "btLiveImagen"
         Me.btLiveImagen.Size = New System.Drawing.Size(132, 43)
         Me.btLiveImagen.TabIndex = 18
@@ -535,7 +564,7 @@ Partial Class frmAdminEvento
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(240, 168)
+        Me.Label5.Location = New System.Drawing.Point(240, 127)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(30, 13)
         Me.Label5.TabIndex = 14
@@ -548,7 +577,7 @@ Partial Class frmAdminEvento
         Me.PanelLive.Controls.Add(Me.lbCategoriaLive)
         Me.PanelLive.Controls.Add(Me.lbPreguntaLive)
         Me.PanelLive.Controls.Add(Me.lbActionLive)
-        Me.PanelLive.Location = New System.Drawing.Point(243, 184)
+        Me.PanelLive.Location = New System.Drawing.Point(243, 147)
         Me.PanelLive.Name = "PanelLive"
         Me.PanelLive.Size = New System.Drawing.Size(132, 100)
         Me.PanelLive.TabIndex = 13
@@ -588,6 +617,15 @@ Partial Class frmAdminEvento
         Me.lbActionLive.TabIndex = 15
         Me.lbActionLive.Text = "Acción"
         Me.lbActionLive.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'btMostrarPuestos
+        '
+        Me.btMostrarPuestos.Location = New System.Drawing.Point(196, 14)
+        Me.btMostrarPuestos.Name = "btMostrarPuestos"
+        Me.btMostrarPuestos.Size = New System.Drawing.Size(92, 29)
+        Me.btMostrarPuestos.TabIndex = 23
+        Me.btMostrarPuestos.Text = "Mostrar"
+        Me.btMostrarPuestos.UseVisualStyleBackColor = True
         '
         'ContextMenuLive
         '
@@ -632,36 +670,93 @@ Partial Class frmAdminEvento
         Me.btIniciarTest.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btIniciarTest.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btIniciarTest.ForeColor = System.Drawing.SystemColors.Control
-        Me.btIniciarTest.Location = New System.Drawing.Point(757, 462)
+        Me.btIniciarTest.Location = New System.Drawing.Point(805, 465)
         Me.btIniciarTest.Name = "btIniciarTest"
         Me.btIniciarTest.Size = New System.Drawing.Size(153, 57)
         Me.btIniciarTest.TabIndex = 12
         Me.btIniciarTest.Text = "Iniciar Test"
         Me.btIniciarTest.UseVisualStyleBackColor = False
         '
-        'btMostrarPuntajes
+        'GroupBox3
         '
-        Me.btMostrarPuntajes.Location = New System.Drawing.Point(243, 339)
-        Me.btMostrarPuntajes.Name = "btMostrarPuntajes"
-        Me.btMostrarPuntajes.Size = New System.Drawing.Size(132, 24)
-        Me.btMostrarPuntajes.TabIndex = 21
-        Me.btMostrarPuntajes.Text = "Mostrar puntajes"
-        Me.btMostrarPuntajes.UseVisualStyleBackColor = True
+        Me.GroupBox3.Controls.Add(Me.GroupPuesto)
+        Me.GroupBox3.Controls.Add(Me.rdSeleccionadosPuestos)
+        Me.GroupBox3.Controls.Add(Me.rdTodoPuestos)
+        Me.GroupBox3.Controls.Add(Me.btOcultarPuestos)
+        Me.GroupBox3.Controls.Add(Me.btMostrarPuestos)
+        Me.GroupBox3.Location = New System.Drawing.Point(505, 408)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(294, 122)
+        Me.GroupBox3.TabIndex = 20
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Puestos"
         '
-        'btOcultarPuntajes
+        'GroupPuesto
         '
-        Me.btOcultarPuntajes.Location = New System.Drawing.Point(243, 368)
-        Me.btOcultarPuntajes.Name = "btOcultarPuntajes"
-        Me.btOcultarPuntajes.Size = New System.Drawing.Size(132, 24)
-        Me.btOcultarPuntajes.TabIndex = 22
-        Me.btOcultarPuntajes.Text = "Ocultar puntajes"
-        Me.btOcultarPuntajes.UseVisualStyleBackColor = True
+        Me.GroupPuesto.Controls.Add(Me.Label1)
+        Me.GroupPuesto.Controls.Add(Me.nuPuesto)
+        Me.GroupPuesto.Location = New System.Drawing.Point(6, 66)
+        Me.GroupPuesto.Name = "GroupPuesto"
+        Me.GroupPuesto.Size = New System.Drawing.Size(181, 47)
+        Me.GroupPuesto.TabIndex = 28
+        Me.GroupPuesto.TabStop = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 15)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(43, 13)
+        Me.Label1.TabIndex = 11
+        Me.Label1.Text = "Puesto:"
+        '
+        'nuPuesto
+        '
+        Me.nuPuesto.Location = New System.Drawing.Point(52, 13)
+        Me.nuPuesto.Maximum = New Decimal(New Integer() {50, 0, 0, 0})
+        Me.nuPuesto.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.nuPuesto.Name = "nuPuesto"
+        Me.nuPuesto.Size = New System.Drawing.Size(38, 20)
+        Me.nuPuesto.TabIndex = 0
+        Me.nuPuesto.Value = New Decimal(New Integer() {3, 0, 0, 0})
+        '
+        'rdSeleccionadosPuestos
+        '
+        Me.rdSeleccionadosPuestos.AutoSize = True
+        Me.rdSeleccionadosPuestos.Location = New System.Drawing.Point(6, 43)
+        Me.rdSeleccionadosPuestos.Name = "rdSeleccionadosPuestos"
+        Me.rdSeleccionadosPuestos.Size = New System.Drawing.Size(95, 17)
+        Me.rdSeleccionadosPuestos.TabIndex = 27
+        Me.rdSeleccionadosPuestos.Text = "Seleccionados"
+        Me.rdSeleccionadosPuestos.UseVisualStyleBackColor = True
+        '
+        'rdTodoPuestos
+        '
+        Me.rdTodoPuestos.AutoSize = True
+        Me.rdTodoPuestos.Checked = True
+        Me.rdTodoPuestos.Location = New System.Drawing.Point(7, 20)
+        Me.rdTodoPuestos.Name = "rdTodoPuestos"
+        Me.rdTodoPuestos.Size = New System.Drawing.Size(50, 17)
+        Me.rdTodoPuestos.TabIndex = 25
+        Me.rdTodoPuestos.TabStop = True
+        Me.rdTodoPuestos.Text = "Todo"
+        Me.rdTodoPuestos.UseVisualStyleBackColor = True
+        '
+        'btOcultarPuestos
+        '
+        Me.btOcultarPuestos.Location = New System.Drawing.Point(196, 43)
+        Me.btOcultarPuestos.Name = "btOcultarPuestos"
+        Me.btOcultarPuestos.Size = New System.Drawing.Size(92, 29)
+        Me.btOcultarPuestos.TabIndex = 24
+        Me.btOcultarPuestos.Text = "Ocultar"
+        Me.btOcultarPuestos.UseVisualStyleBackColor = True
         '
         'frmAdminEvento
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(970, 555)
+        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.btIniciarTest)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.StatusStrip1)
@@ -690,6 +785,11 @@ Partial Class frmAdminEvento
         Me.PanelLive.ResumeLayout(False)
         Me.PanelLive.PerformLayout()
         Me.ContextMenuLive.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
+        Me.GroupPuesto.ResumeLayout(False)
+        Me.GroupPuesto.PerformLayout()
+        CType(Me.nuPuesto, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -763,4 +863,12 @@ Partial Class frmAdminEvento
     Friend WithEvents btCerrarLive As System.Windows.Forms.Button
     Friend WithEvents btOcultarPuntajes As System.Windows.Forms.Button
     Friend WithEvents btMostrarPuntajes As System.Windows.Forms.Button
+    Friend WithEvents btMostrarPuestos As System.Windows.Forms.Button
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents btOcultarPuestos As System.Windows.Forms.Button
+    Friend WithEvents rdSeleccionadosPuestos As System.Windows.Forms.RadioButton
+    Friend WithEvents rdTodoPuestos As System.Windows.Forms.RadioButton
+    Friend WithEvents GroupPuesto As System.Windows.Forms.GroupBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents nuPuesto As System.Windows.Forms.NumericUpDown
 End Class

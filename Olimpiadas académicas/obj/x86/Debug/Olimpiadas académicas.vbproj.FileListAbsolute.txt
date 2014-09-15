@@ -529,3 +529,4 @@ D:\COMPARTIR\00\MyLyli\Olimpiadas académicas\Olimpiadas académicas\obj\x86\Deb
 D:\COMPARTIR\00\MyLyli\Olimpiadas académicas\Olimpiadas académicas\obj\x86\Debug\Olimpiadas académicas.vbproj.GenerateResource.Cache
 D:\COMPARTIR\00\MyLyli\Olimpiadas académicas\Olimpiadas académicas\obj\x86\Debug\de\Olimpiadas académicas.resources.dll
 D:\COMPARTIR\00\MyLyli\Olimpiadas académicas\Olimpiadas académicas\obj\x86\Debug\en\Olimpiadas académicas.resources.dll
+E:\DOCUMENTOS\Olimpiadas académicas\Olimpiadas académicas\obj\x86\Debug\Olimpiadas_académicas.frmPuestos.resources

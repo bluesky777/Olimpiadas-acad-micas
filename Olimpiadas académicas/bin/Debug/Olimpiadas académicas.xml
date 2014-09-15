@@ -19,6 +19,10 @@ Olimpiadasacadémicas
 	<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
+</member><member name="P:Olimpiadas_académicas.My.Resources.Resources.copa">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
 </member><member name="P:Olimpiadas_académicas.My.Resources.Resources.decoroStreak">
 	<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
@@ -72,6 +76,14 @@ Olimpiadasacadémicas
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member><member name="P:Olimpiadas_académicas.My.Resources.Resources.Resultados">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Olimpiadas_académicas.My.Resources.Resources.winner">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member><member name="P:Olimpiadas_académicas.My.Resources.Resources.winner1">
 	<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>

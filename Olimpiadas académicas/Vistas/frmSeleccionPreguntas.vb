@@ -85,7 +85,7 @@ Public Class frmSeleccionPreguntas
         Dim dtCategorias As New DataTable
 
         'ERRROOOORRRRRRRRRRR  POR EL EVENTO QUE ES ESTATICO
-        conn.TraerTabla(dtCategorias, "Select CatId, CatNombre from tbCategorias where CatEvento=2")
+        conn.TraerTabla(dtCategorias, "Select CatId, CatNombre from tbCategorias where CatEvento=1")
 
         'Lleno el combobox con las categorias
         cbCategoria.DisplayMember = "CatNombre"

@@ -6,7 +6,7 @@
     Dim distanciaVPart As Integer = 72
     Public idCategoria As Integer
     Public lbTituloCategoria As New Label
-    Dim pnResultados As pnResult
+    Public pnResultados As pnResult
     Dim AlturaPadreResult As Integer
     Dim xspace As Integer = 10
     Dim yspace As Integer = 10
@@ -123,7 +123,20 @@
 
     End Function
 
+
+
     Sub CrearPanelesParticiantes()
+
+        If Me.pnResultados.soloPuestos = True Then
+            ' Ordeno los participantes por puntaje
+            Me.Participantes.Sort(AddressOf Me.CompareExamenesConTiempo)
+        Else
+            ' Ordeno los participantes por pregCorrectas
+            Me.Participantes.Sort(Function(x, y) y.PregCorrectas.CompareTo(x.PregCorrectas))
+
+        End If
+
+
         Try
             Me.lbTituloCategoria.Text = Participantes(0).Categoria
         Catch ex As Exception
@@ -134,14 +147,51 @@
         ' Quito los paneles agregados
         Me.panelesParticipantes.Clear()
 
+        Dim primero As Boolean = True
+
         For Each Parti As clsDatosDeUnCliente In Me.Participantes
 
             ' Creo el panel de un particpante, le doy posición y lo agrego al panel de la categoría (me)
             Dim pnDatosParticipante As New pnParticipante(Parti, Me)
+
+            ' Color especial para el primer puesto si solo se muestrar los puestos.
+            If Me.pnResultados.soloPuestos = True Then
+                If primero = True Then
+                    pnDatosParticipante.BackColor = Color.Yellow
+                    pnDatosParticipante.lbEntidad.ForeColor = Color.Black
+                    pnDatosParticipante.lbNombre.ForeColor = Color.Black
+                    primero = False
+                End If
+
+            End If
+
+
             Me.panelesParticipantes.Add(pnDatosParticipante)
         Next
 
     End Sub
+
+
+    Private Function CompareExamenesConTiempo(ByVal Datos1 As clsDatosDeUnCliente, ByVal Datos2 As clsDatosDeUnCliente) As Integer
+        If Datos1.PuntajeExam = Datos2.PuntajeExam Then
+            'MsgBox(Datos1.TiempoExamPuesto & " - 2: " & Datos2.TiempoExamPuesto)
+            If Datos1.TiempoExamPuesto = Datos2.TiempoExamPuesto Then
+                If Datos1.Nombre = Nothing Then
+                    Return 1
+                ElseIf Datos2.Nombre = Nothing Then
+                    Return 0
+                End If
+                Return Datos1.Nombre.CompareTo(Datos2.Nombre)
+            Else
+
+                Return Datos1.TiempoExamPuesto.CompareTo(Datos2.TiempoExamPuesto)
+            End If
+
+        Else
+            Return Datos2.PuntajeExam.CompareTo(Datos1.PuntajeExam)
+        End If
+
+    End Function
 
 
 End Class
@@ -159,8 +209,8 @@ Public Class pnParticipante
     Inherits Panel
 
 
-    Dim lbNombre As New Label
-    Dim lbEntidad As New Label
+    Public lbNombre As New Label
+    Public lbEntidad As New Label
     Dim lbPuntaje As New Label
 
 
@@ -185,8 +235,6 @@ Public Class pnParticipante
         Me.BorderStyle = Windows.Forms.BorderStyle.FixedSingle
 
         With Me.lbPuntaje
-            .Width = 60
-            .Text = datosParticipante.PregCorrectas
             .Top = 2
             .Left = Me.Width - Me.Width - 1
             .Font = New Font("Arial", 20, FontStyle.Bold)
@@ -195,6 +243,14 @@ Public Class pnParticipante
             .BackColor = Color.Blue
             .ForeColor = Color.White
             .Visible = False
+
+            If pnParent.pnResultados.soloPuestos = True Then
+                .Text = datosParticipante.PuntajeExam & "%"
+                .Width = 70
+            Else
+                .Text = datosParticipante.PregCorrectas
+                .Width = 60
+            End If
         End With
 
 

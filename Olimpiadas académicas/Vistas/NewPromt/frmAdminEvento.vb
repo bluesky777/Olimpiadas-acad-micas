@@ -4,8 +4,11 @@
 
 
     Dim NombreWav As String
+    Dim ConsultaBuscar As String
 
     Dim salir As Boolean = False
+
+    Dim clientesPuestos As New List(Of clsDatosDeUnCliente)
 
 
 #Region "CERRAR Y SONIDO"
@@ -363,6 +366,20 @@
 
         Me.centrarControlsPanelLive()
     End Sub
+    Private Sub setPnLivePuestos()
+        Me.lbActionLive.Text = "Puestos"
+        Me.lbCategoriaLive.Text = Me.ListCategorias.Text
+        Me.lbPreguntaLive.Text = "Puesto: " & nuPuesto.Value
+
+
+        PanelLive.BackColor = _COLOR_PARTCIPANTES
+        PanelLive.ForeColor = _COLOR_FONT
+        For Each Control As Control In PanelLive.Controls
+            Control.ForeColor = _COLOR_FONT
+        Next
+
+        Me.centrarControlsPanelLive()
+    End Sub
 
     Private Sub setPnLivePreguntas(numPreg As Integer)
         lbActionLive.Text = "Pregunta Live"
@@ -524,6 +541,7 @@
 
     Private Sub CERRAR_Promt()
         frmPromt.Close()
+        frmPuestos.Close()
         lbActionLive.Text = "Cerrado"
         lbCategoriaLive.Text = ""
         lbPreguntaLive.Text = ""
@@ -634,5 +652,182 @@
 
             End Try
         Next
+
+        For Each cliente As clsDatosDeUnCliente In clientesPuestos
+            Try
+                cliente.MostrarPuntajes(mostrar)
+            Catch ex As Exception
+
+            End Try
+        Next
+
+    End Sub
+
+
+    Private Sub btMostrarPuestos_Click(sender As Object, e As EventArgs) Handles btMostrarPuestos.Click
+
+        Try
+            frmPromt.Close()
+            frmPuestos.Close()
+        Catch ex As Exception
+
+        End Try
+
+        '************************************************************************
+        ''******        CAMBIE EL TIPO DE EXAMEN!!!      ************************
+        '************************************************************************
+        ConsultaBuscar = "select ExaId, u.UsuId, UsuNombre, EntNombre, EntNombreCorto, InsId, CatId, CatNombreCorto, CatNombre, ExaCantPreg " _
+                        & "from tbEventos ev, tbCategorias c, tbInscripciones i, tbExamenes ex, tbEntidades en, " _
+                        & "tbUsuarios u " _
+                        & "where ev.EvId=c.CatEvento and c.CatId=i.InsCategoria and i.InsId=ex.ExaInscripcion and ExaTipoExamen= 2 " _
+                        & "and u.UsuId=i.InsUsuario " _
+                        & "and en.EntId=i.InsEntidad "
+
+
+        If rdTodoPuestos.Checked = True Then
+
+
+
+            ArreglarPantalla()
+
+            Dim dtExam As New DataTable
+            conn.TraerTabla(dtExam, ConsultaBuscar)
+
+            With dtExam
+                .Columns.Add("Tiempo")
+                .Columns.Add("Correctas")
+                .Columns.Add("Incorrectas")
+                .Columns.Add("Total")
+                .Columns.Add("Puntaje")
+            End With
+
+            Dim DatosClientesCalc As New List(Of clsDatosDeUnCliente)
+            clientesPuestos.Clear()
+
+            For Each fila As DataRow In dtExam.Rows
+                m_Examenes.Id = fila.Item("ExaId").ToString
+                m_Examenes.CalcularExamen()
+
+                fila.Item("Tiempo") = m_Examenes.tiempoTotal
+                fila.Item("Correctas") = m_Examenes.respCorrectas
+                fila.Item("Incorrectas") = m_Examenes.respIncorrectas
+                fila.Item("Total") = m_Examenes.pregTotales
+                fila.Item("Puntaje") = m_Examenes.totalScore
+
+                'MessageBox.Show(fila.Item("UsuNombre") & " - " & fila.Item("Tiempo") & " - " & fila.Item("Correctas") & " - " & fila.Item("Puntaje"))
+
+                Dim unCliente As New clsDatosDeUnCliente
+                unCliente.idExamen = fila.Item("ExaId")
+                unCliente.Nombre = fila.Item("UsuNombre")
+                unCliente.Entidad = fila.Item("EntNombre")
+                unCliente.AliasEntidad = fila.Item("EntNombreCorto")
+                unCliente.idCategoria = fila.Item("CatId")
+                unCliente.Categoria = fila.Item("CatNombre")
+                unCliente.AliasCategoria = fila.Item("CatNombreCorto")
+                unCliente.PuntajeExam = fila.Item("Puntaje")
+                Try
+                    Dim tiempo As New DateTime
+                    tiempo = Convert.ToDateTime("00:" & fila.Item("Tiempo"))
+                    'MsgBox(fila.Item("Tiempo") & " - transformado: " & tiempo)
+                    unCliente.TiempoExamPuesto = tiempo
+                Catch ex As Exception
+
+                End Try
+
+                unCliente.PregCorrectas = fila.Item("Correctas")
+                unCliente.PregIncorrectas = fila.Item("Incorrectas")
+
+                DatosClientesCalc.Add(unCliente)
+
+            Next
+
+            clientesPuestos = DatosClientesCalc
+            frmPromt.MostrarResultados(DatosClientesCalc, True)
+
+
+        ElseIf rdSeleccionadosPuestos.Checked = True Then
+
+            If ListCategorias.SelectedValue > 0 Then
+                ' Mejoramos la consulta para filtrar por categoría.
+                ConsultaBuscar += " and c.CatId=" & ListCategorias.SelectedValue
+            Else
+                MsgBox("Debe seleccíonar una categoría.")
+                Return
+            End If
+
+
+
+            Dim dtExam As New DataTable
+            conn.TraerTabla(dtExam, ConsultaBuscar)
+
+            With dtExam
+                .Columns.Add("Tiempo")
+                .Columns.Add("Correctas")
+                .Columns.Add("Incorrectas")
+                .Columns.Add("Total")
+                .Columns.Add("Puntaje")
+            End With
+
+            Dim DatosClientesCalc As New List(Of clsDatosDeUnCliente)
+
+            For Each fila As DataRow In dtExam.Rows
+                m_Examenes.Id = fila.Item("ExaId").ToString
+                m_Examenes.CalcularExamen()
+
+                fila.Item("Tiempo") = m_Examenes.tiempoTotal
+                fila.Item("Correctas") = m_Examenes.respCorrectas
+                fila.Item("Incorrectas") = m_Examenes.respIncorrectas
+                fila.Item("Total") = m_Examenes.pregTotales
+                fila.Item("Puntaje") = m_Examenes.totalScore
+
+                'MessageBox.Show(fila.Item("UsuNombre") & " - " & fila.Item("Tiempo") & " - " & fila.Item("Correctas") & " - " & fila.Item("Puntaje"))
+
+                Dim unCliente As New clsDatosDeUnCliente
+                unCliente.idExamen = fila.Item("ExaId")
+                unCliente.Nombre = fila.Item("UsuNombre")
+                unCliente.Entidad = fila.Item("EntNombre")
+                unCliente.AliasEntidad = fila.Item("EntNombreCorto")
+                unCliente.idCategoria = fila.Item("CatId")
+                unCliente.Categoria = fila.Item("CatNombre")
+                unCliente.AliasCategoria = fila.Item("CatNombreCorto")
+                unCliente.PuntajeExam = fila.Item("Puntaje")
+                Try
+                    Dim tiempo As New DateTime
+                    tiempo = Convert.ToDateTime("00:" & fila.Item("Tiempo"))
+                    'MsgBox(fila.Item("Tiempo") & " - transformado: " & tiempo)
+                    unCliente.TiempoExamPuesto = tiempo
+                Catch ex As Exception
+
+                End Try
+
+                unCliente.PregCorrectas = fila.Item("Correctas")
+                unCliente.PregIncorrectas = fila.Item("Incorrectas")
+
+                DatosClientesCalc.Add(unCliente)
+
+            Next
+
+            ArreglarPantalla(frmPuestos)
+            frmPuestos.mostrarPuesto(DatosClientesCalc, Me.nuPuesto.Value)
+
+
+        End If
+
+
+
+        Me.setPnLivePuestos()
+    End Sub
+
+    Private Sub btOcultarPuestos_Click(sender As Object, e As EventArgs) Handles btOcultarPuestos.Click
+        frmPromt.Close()
+        frmPuestos.Close()
+    End Sub
+
+    Private Sub rdTodoPuestos_CheckedChanged(sender As Object, e As EventArgs) Handles rdTodoPuestos.CheckedChanged
+        If rdTodoPuestos.Checked = True Then
+            GroupPuesto.Visible = False
+        Else
+            GroupPuesto.Visible = True
+        End If
     End Sub
 End Class

@@ -57,7 +57,7 @@ Public Class frmUsuario
 
         'Estoy en el evento 2013, pero estoy usando el código 2, esto solo si entro directamente al formulario frmUsuario
         If Yo.EvId = 0 Then
-            Yo.EvId = 2
+            Yo.EvId = 1
         End If
 
 

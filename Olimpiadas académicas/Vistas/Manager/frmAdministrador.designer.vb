@@ -438,6 +438,7 @@ Partial Class frmAdministrador
         '
         Me.nuTiempoPreg.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.nuTiempoPreg.Location = New System.Drawing.Point(196, 240)
+        Me.nuTiempoPreg.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.nuTiempoPreg.Name = "nuTiempoPreg"
         Me.nuTiempoPreg.Size = New System.Drawing.Size(46, 21)
         Me.nuTiempoPreg.TabIndex = 25
@@ -499,6 +500,7 @@ Partial Class frmAdministrador
         '
         Me.nuTiempoExa.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.nuTiempoExa.Location = New System.Drawing.Point(196, 214)
+        Me.nuTiempoExa.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.nuTiempoExa.Name = "nuTiempoExa"
         Me.nuTiempoExa.Size = New System.Drawing.Size(46, 21)
         Me.nuTiempoExa.TabIndex = 19

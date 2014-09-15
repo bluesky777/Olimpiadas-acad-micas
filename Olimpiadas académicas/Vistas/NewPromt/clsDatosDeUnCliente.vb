@@ -15,6 +15,11 @@ Public Class clsDatosDeUnCliente : Implements IEquatable(Of clsDatosDeUnCliente)
     Public Categoria As String
     Public AliasCategoria As String
     Public cantPregsExam As Integer
+
+    'Solo para los puestos
+    Public PuntajeExam As Integer
+    Public TiempoExamPuesto As DateTime
+
     Public TiempoExam As Integer = 0
     Public IPString As String
     Public NombreEquipo As String
@@ -53,6 +58,12 @@ Public Class clsDatosDeUnCliente : Implements IEquatable(Of clsDatosDeUnCliente)
         Me.Socket = TheSocket
 
         ActivarEscuchador()
+
+    End Sub
+
+
+    Sub New()
+     
 
     End Sub
 
